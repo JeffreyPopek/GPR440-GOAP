@@ -33,7 +33,12 @@ public class GoapPlanner : MonoBehaviour
             if (!currentAction.isCompleted)
                 currentAction.Execute();
             else
+            {
+                // will be completed in the above statement
+                currentAction.isCompleted = false;
+                currentAction = null;
                 SelectNextAction();
+            }
         }
     }
 
@@ -41,7 +46,6 @@ public class GoapPlanner : MonoBehaviour
     void Start()
     {
         actions = new List<GoapAction>(GetComponents<GoapAction>());
-
         hasFood = false;
         
         SelectNextAction();
@@ -56,7 +60,7 @@ public class GoapPlanner : MonoBehaviour
         {
             if (action.IsAchievable())
             {
-                Debug.Log("Action: " + action.actionName + " | Cost: " + action.cost);
+                //Debug.Log("Action: " + action.actionName + " | Cost: " + action.cost);
 
                 if (action.cost < lowestCost)
                 {
@@ -68,14 +72,10 @@ public class GoapPlanner : MonoBehaviour
 
         if (bestAction != null)
         {
-            Debug.Log("Selected Action: " + bestAction.actionName);
+            //Debug.Log("Selected Action: " + bestAction.actionName);
             currentAction = bestAction;
         }
         else
-        {
             Debug.Log("No valid action found!");
-        }
     }
-
-
 }

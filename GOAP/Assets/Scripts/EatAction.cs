@@ -20,9 +20,16 @@ public class EatAction : GoapAction
     {
         Debug.Log("executing eat food action");
         GoapPlanner planner = GetComponent<GoapPlanner>();
+
+        if (!planner.hasFood)
+        {
+            Debug.Log("dont have food but executing1");
+            return;
+        }
     
         planner.health += 40f; // Restore HP
-        if (planner.health > planner.maxHealth) planner.health = planner.maxHealth;
+        if (planner.health > planner.maxHealth) 
+            planner.health = planner.maxHealth;
     
         planner.hasFood = false; // Food consumed
         planner.isTired = false; // Reset tired status

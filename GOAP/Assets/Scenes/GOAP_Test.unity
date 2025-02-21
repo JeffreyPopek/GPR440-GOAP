@@ -648,7 +648,7 @@ PrefabInstance:
     - target: {fileID: 1383736590347233127, guid: d9c3198682c5c8548a333dd2ada8cc10,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.240664
+      value: -3.19
       objectReference: {fileID: 0}
     - target: {fileID: 1383736590347233127, guid: d9c3198682c5c8548a333dd2ada8cc10,
         type: 3}
@@ -658,7 +658,7 @@ PrefabInstance:
     - target: {fileID: 1383736590347233127, guid: d9c3198682c5c8548a333dd2ada8cc10,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.275475
+      value: 3.93
       objectReference: {fileID: 0}
     - target: {fileID: 1383736590347233127, guid: d9c3198682c5c8548a333dd2ada8cc10,
         type: 3}
@@ -703,7 +703,7 @@ PrefabInstance:
     - target: {fileID: 1566667290326714724, guid: d9c3198682c5c8548a333dd2ada8cc10,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -831,9 +831,10 @@ GameObject:
   - component: {fileID: 1432890424}
   - component: {fileID: 1432890423}
   - component: {fileID: 1432890425}
+  - component: {fileID: 1432890426}
   m_Layer: 0
   m_Name: Agent
-  m_TagString: Untagged
+  m_TagString: Agent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1021,6 +1022,7 @@ MonoBehaviour:
   actionName: Collect
   cost: 5
   isCompleted: 0
+  targetFood: {fileID: 0}
 --- !u!114 &1432890424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1049,7 +1051,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionName: Rest
-  cost: 2
+  cost: 1
+  isCompleted: 0
+--- !u!114 &1432890426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432890412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38b2b63dba7d2ee4390c42d059b2472f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Idle
+  cost: 1000
   isCompleted: 0
 --- !u!1001 &1592965051
 PrefabInstance:
@@ -1062,17 +1079,17 @@ PrefabInstance:
     - target: {fileID: 1383736590347233127, guid: d9c3198682c5c8548a333dd2ada8cc10,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.446582
+      value: -3.36
       objectReference: {fileID: 0}
     - target: {fileID: 1383736590347233127, guid: d9c3198682c5c8548a333dd2ada8cc10,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4999981
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1383736590347233127, guid: d9c3198682c5c8548a333dd2ada8cc10,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.686588
+      value: -6.66
       objectReference: {fileID: 0}
     - target: {fileID: 1383736590347233127, guid: d9c3198682c5c8548a333dd2ada8cc10,
         type: 3}

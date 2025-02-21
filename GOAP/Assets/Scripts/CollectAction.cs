@@ -1,20 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CollectAction : GoapAction
 {
-    private GameObject targetFood;
+    public GameObject targetFood;
 
     public override void Start()
     {
         base.Start();
         cost = 5f; // high cost, do last
+        FindClosestFood();
     }
     
     public override bool IsAchievable()
     {
-        targetFood = GameObject.FindWithTag("Food"); // Find a food item
+        // find if a food exists
+        targetFood = GameObject.FindWithTag("Food");
         return targetFood != null && !GetComponent<GoapPlanner>().hasFood;
     }
 
@@ -28,11 +31,32 @@ public class CollectAction : GoapAction
 
         if (Vector3.Distance(agent.transform.position, targetFood.transform.position) < 1f)
         {
-            Destroy(targetFood); // Simulate picking up food
+            targetFood.GetComponent<Food>().GetCollected();
+            
+            targetFood = null;
             GetComponent<GoapPlanner>().hasFood = true;
             isCompleted = true;
             
             Debug.Log("completed find food action");
+        }
+    }
+
+    private void FindClosestFood()
+    {
+        //Debug.Log($"agent pos {agent.transform.position}");
+        GameObject[] found;
+        found = GameObject.FindGameObjectsWithTag("Food");
+
+        targetFood = found[0];
+        
+        if (found.Length != 1)
+        {
+            foreach (var go in found)
+            {
+                if (Vector3.Distance(go.transform.position, agent.transform.position) <
+                    Vector3.Distance(targetFood.transform.position, agent.transform.position))
+                    targetFood = go;
+            } 
         }
     }
 }

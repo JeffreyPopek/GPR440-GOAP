@@ -13,7 +13,7 @@ public class RestAction : GoapAction
     public override bool IsAchievable()
     {
         bool canRest = GetComponent<GoapPlanner>().isTired && GetComponent<GoapPlanner>().restStop != null;
-        Debug.Log("Can Rest: " + canRest);
+        //Debug.Log("Can Rest: " + canRest);
         return canRest;
     }
 
