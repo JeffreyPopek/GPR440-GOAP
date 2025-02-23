@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class RestAction : GoapAction
@@ -29,7 +30,7 @@ public class RestAction : GoapAction
         {
             agent.SetDestination(restStop.transform.position);
 
-            if (Vector3.Distance(agent.transform.position, restStop.transform.position) < 1.5f) // Increase the threshold
+            if (Vector3.Distance(agent.transform.position, restStop.transform.position) < 1.5f)
             {
                 Debug.Log("Resting...");
                 GoapPlanner planner = GetComponent<GoapPlanner>();
@@ -39,6 +40,8 @@ public class RestAction : GoapAction
 
                 planner.isTired = false;
                 isCompleted = true;
+                
+                FoodSpawner.instance.SpawnFood();
             }
         }
     }
